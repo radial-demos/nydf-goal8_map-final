@@ -15,9 +15,9 @@ bs.init({
   port: 8080,
   open: false,
   files: ['./public'],
-  serveStatic: [{
-    directory: true,
-    route: '/',
-    dir: './public',
-  }],
+  // serveStatic: [{
+  //   directory: true,
+  //   route: '/',
+  //   dir: './public',
+  // }],
 });
