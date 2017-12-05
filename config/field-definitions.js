@@ -87,4 +87,4 @@ module.exports = [
       { value: Number.POSITIVE_INFINITY, label: '> 200 M USD' },
     ],
   },
-};
+];
