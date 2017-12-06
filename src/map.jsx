@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Nav from './components/nav.jsx';
+
 const debug = require('debug')('nydf:map');
 
 class Component extends React.Component {
@@ -11,9 +13,13 @@ class Component extends React.Component {
   }
 
   render() {
-    debug(this.forestFields);
     return (
-      <div>I'm going to be a cool map when I grow up</div>
+      <div>
+        <Nav
+          forestFields={this.forestFields}
+          financeFields={this.financeFields}
+        />
+      </div>
     );
   }
 }
