@@ -9,7 +9,22 @@ class Component extends React.Component {
     super(props);
     this.forestFields = props.fieldDefinitions.filter(d => d.type === 'forest');
     this.financeFields = props.fieldDefinitions.filter(d => d.type === 'finance');
+    this.state = {
+      activeFields: {
+        forest: this.forestFields[0].id,
+        finance: this.financeFields[0].id,
+      },
+    };
+    this.updateActiveFields = this.updateActiveFields.bind(this);
     // this.state = { activeId: props.items[0].id };
+  }
+
+  updateActiveFields(fieldType, fieldId) {
+    this.setState((prevState) => {
+      const { activeFields } = prevState;
+      activeFields[fieldType] = fieldId;
+      return { activeFields };
+    });
   }
 
   render() {
@@ -18,6 +33,7 @@ class Component extends React.Component {
         <Nav
           forestFields={this.forestFields}
           financeFields={this.financeFields}
+          updateActiveFields={this.updateActiveFields}
         />
       </div>
     );
