@@ -1,0 +1,22 @@
+.panel {
+  margin: 0 5em;
+}
+
+.group {
+  display: table;
+  width: 100%;
+}
+
+.row {
+  display: table-row;
+}
+
+.nav-item,
+.legend-item {
+  display: table-cell;
+}
+
+nav-item {
+  text-align: center;
+  vertical-align: middle;
+}

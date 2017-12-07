@@ -1,3 +1,4 @@
+import './scss/index.scss'; // Force Webpack to load SCSS
 import ReactDOM from 'react-dom';
 import React from 'react';
 
