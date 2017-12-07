@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Nav from './components/nav.jsx';
+import Legend from './components/legend.jsx';
 
 const debug = require('debug')('nydf:map');
 
@@ -34,6 +35,11 @@ class Component extends React.Component {
           forestFields={this.forestFields}
           financeFields={this.financeFields}
           updateActiveFields={this.updateActiveFields}
+        />
+        <Legend
+          forestFields={this.forestFields}
+          financeFields={this.financeFields}
+          activeFields={this.state.activeFields}
         />
       </div>
     );
