@@ -23,16 +23,17 @@ class NavRow extends React.Component {
 
   render() {
     return (
-      <div className="group group--nav">
-        <div className={classNames('row', 'nav-row', `nav-row-${this.props.type}`)}>
+      <div className={classNames('nav-group', `nav-group--${this.props.type}`)}>
+        <div className={classNames('row', 'nav-row')}>
           {this.props.fields.map(field =>
             <span
               key={field.id}
               onClick={this.handleClick.bind(this, field.type, field.id)}
               className={classNames('nav-item', `nav-item--${field.id}`, { 'nav-item--active': (field.id === this.state.activeField) })}
             >
-            {field.label}
-            </span>)}
+              <span className='nav-label'>{field.label}</span>
+            </span>)
+          }
         </div>
       </div>
     );
