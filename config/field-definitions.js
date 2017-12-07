@@ -22,7 +22,7 @@ module.exports = [
     ],
   },
   {
-    id: 'forest-loss_percent',
+    id: 'forest-losspercent',
     sourceIndex: 3,
     multiplier: 100, /* transform raw value */
     type: 'forest',
@@ -40,7 +40,7 @@ module.exports = [
     ],
   },
   {
-    id: 'finance-results_based',
+    id: 'finance-resultsbased',
     sourceIndex: 6,
     type: 'finance',
     label: 'Results-Based REDD+ Commitments',
