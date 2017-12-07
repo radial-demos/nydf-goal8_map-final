@@ -23,15 +23,17 @@ class NavRow extends React.Component {
 
   render() {
     return (
-      <div className={classNames('nav-row', `nav-row--${this.props.type}`)}>
-        {this.props.fields.map(field =>
-          <span
-            key={field.id}
-            onClick={this.handleClick.bind(this, field.type, field.id)}
-            className={classNames('nav-item', `nav-item--${field.id}`, { 'nav-item--active': (field.id === this.state.activeField) })}
-          >
-          {field.label}
-          </span>)}
+      <div className="group group--nav">
+        <div className={classNames('row', 'nav-row', `nav-row-${this.props.type}`)}>
+          {this.props.fields.map(field =>
+            <span
+              key={field.id}
+              onClick={this.handleClick.bind(this, field.type, field.id)}
+              className={classNames('nav-item', `nav-item--${field.id}`, { 'nav-item--active': (field.id === this.state.activeField) })}
+            >
+            {field.label}
+            </span>)}
+        </div>
       </div>
     );
   }
@@ -46,7 +48,7 @@ class Component extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="panel panel--nav">
         <NavRow
           fields={this.forestFields}
           type='forest'

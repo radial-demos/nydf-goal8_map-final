@@ -13,15 +13,20 @@ class LegendRow extends React.Component {
 
   render() {
     return (
-      <div className={classNames('legend-row', `legend-row--${this.props.field.type}`)}>
-        {this.props.field.binPartitions.map((bin, index) =>
-          <span
-            key={index}
-            className={classNames('legend-item', `legend-item--${index}`)}
-          >
-          {bin.label}
-          </span>)
-        }
+      <div className="group group--legend">
+        <div className={classNames('row', 'legend-row', `legend-row--${this.props.field.type}`)}>
+          {this.props.field.binPartitions.map((bin, index) =>
+            <div
+              key={index}
+              className={classNames('legend-item', `legend-item--${index}`)}
+            >
+              <span className={classNames('legend-marker', `legend-marker--${index}`)}>
+                <span className={classNames('marker-shape', `marker-shape--${index}`)}></span>
+              </span>
+              <span className='legend-label'>{bin.label}</span>
+            </div>)
+          }
+        </div>
       </div>
     );
   }
@@ -38,7 +43,7 @@ class Component extends React.Component {
     const forestField = this.forestFields.find(d => d.id === this.props.activeFields.forest);
     const financeField = this.financeFields.find(d => d.id === this.props.activeFields.finance);
     return (
-      <div>
+      <div className="panel panel--legend">
         <LegendRow
           field={forestField}
         />
