@@ -37,7 +37,7 @@ class Component extends React.Component {
     const forestField = this.props.activeFields.forest;
     const financeField = this.props.activeFields.finance;
     return (
-      <div className="panel panel--legend">
+      <div className="pnl pnl--legend">
         <LegendRow
           field={forestField}
         />

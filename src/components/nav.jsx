@@ -49,7 +49,7 @@ class Component extends React.Component {
 
   render() {
     return (
-      <div className="panel panel--nav">
+      <div className="pnl pnl--nav">
         <NavRow
           fields={this.forestFields}
           type='forest'
