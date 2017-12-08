@@ -33,15 +33,9 @@ class LegendRow extends React.Component {
 }
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-    this.forestFields = this.props.forestFields;
-    this.financeFields = this.props.financeFields;
-  }
-
   render() {
-    const forestField = this.forestFields.find(d => d.id === this.props.activeFields.forest);
-    const financeField = this.financeFields.find(d => d.id === this.props.activeFields.finance);
+    const forestField = this.props.activeFields.forest;
+    const financeField = this.props.activeFields.finance;
     return (
       <div className="panel panel--legend">
         <LegendRow
