@@ -41,19 +41,25 @@ class Component extends React.Component {
   render() {
     return (
       <div>
-        <Nav
-          forestFields={this.availableFields.forest}
-          financeFields={this.availableFields.finance}
-          updateActiveFields={this.updateActiveFields}
-        />
-        <Legend
-          activeFields={this.state.activeFields}
-        />
-        <Table
-          data={this.props.data}
-          activeFields={this.state.activeFields}
-          limit="10"
-        />
+        <div className="nydfcomponent nydfcomponent--narrow">
+          <Nav
+            forestFields={this.availableFields.forest}
+            financeFields={this.availableFields.finance}
+            updateActiveFields={this.updateActiveFields}
+          />
+        </div>
+        <div className="nydfcomponent nydfcomponent--narrow">
+          <Legend
+            activeFields={this.state.activeFields}
+          />
+        </div>
+        <div className="nydfcomponent nydfcomponent--narrow">
+          <Table
+            data={this.props.data}
+            activeFields={this.state.activeFields}
+            limit="10"
+          />
+        </div>
       </div>
     );
   }
