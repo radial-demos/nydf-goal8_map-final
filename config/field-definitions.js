@@ -24,7 +24,7 @@ module.exports = [
   {
     id: 'forest-losspercent',
     sourceIndex: 3,
-    multiplier: 100, /* transform raw value */
+    sourceMultiplier: 100, /* transform raw value */
     type: 'forest',
     label: 'Rate of Loss',
     units: 'percent/year',
