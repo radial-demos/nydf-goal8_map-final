@@ -3,7 +3,7 @@ $color-nav-forest-losspercent: #a79646;
 $color-nav-finance-resultsbased: #e8b685;
 $color-nav-finance-redd: #66b23e;
 $color-nav-finance-development: #66b8bc;
-$color-nav-finance-development-trans: rgba(102, 184, 188, .35);
+// $color-nav-finance-development-trans: rgba(102, 184, 188, .35);
 
 $color-bin-forest-0: #eed870;
 $color-bin-forest-1: #dea71b;
@@ -21,8 +21,8 @@ $size-bin-finance-1: 30px;
 $size-bin-finance-2: 45px;
 $size-bin-finance-3: 80px;
 
-.panel {
-  margin: 0 3em;
+.nydfcomponent--narrow {
+  margin: 0 3.5em;
 }
 
 .row {
@@ -95,11 +95,38 @@ $size-bin-finance-3: 80px;
 
 .legend-item {
   display: table-cell;
-  padding-right: 2em;
+  // padding-right: 2em;
+  padding: 1em 1em;
+  vertical-align: middle;
+}
+
+.legend-marker {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.legend-label {
+  display: table-cell;
   vertical-align: middle;
 }
 
 .legend-group--forest {
+  .legend-item--0 {
+    width: 150px;
+  }
+
+  .legend-item--1 {
+    width: 200px;
+  }
+
+  .legend-item--2 {
+    width: 200px;
+  }
+
+  .legend-item--3 {
+    width: 130px;
+  }
+
   .marker-shape {
     border: 2px solid $color-gray-border-transition;
     display: inline-block;
@@ -131,16 +158,6 @@ $size-bin-finance-3: 80px;
 }
 
 .legend-group--finance {
-  .legend-marker {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .legend-label {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
   .marker-shape {
     border: 2px solid $color-gray-border-transition;
     border-radius: 50%;
@@ -189,3 +206,50 @@ $size-bin-finance-3: 80px;
     }
   }
 }
+
+.pnl--table {
+  display: table;
+  width: 100%;
+}
+
+.table-group {
+  display: table-cell;
+  width: 50%;
+
+  td {
+    font-size: 1.1em;
+    padding-bottom: .4em;
+
+    &:first-child {
+      padding-right: 4em;
+    }
+  }
+
+  .table-column {
+    color: $color-white;
+    padding: 2em;
+  }
+
+  .table-column--forest-loss {
+    background-color: $color-nav-forest-loss;
+  }
+
+  .table-column--forest-losspercent {
+    background-color: $color-nav-forest-losspercent;
+  }
+
+  .table-column--finance-resultsbased {
+    background-color: $color-nav-finance-resultsbased;
+  }
+
+  .table-column--finance-redd {
+    background-color: $color-nav-finance-redd;
+  }
+
+  .table-column--finance-development {
+    background-color: $color-nav-finance-development;
+  }
+}
+// .table-column {
+//   display: table-cell;
+// }
