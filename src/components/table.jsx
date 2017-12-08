@@ -9,16 +9,18 @@ class TableColumn extends React.Component {
     let { indexes } = this.props.field;
     if (this.props.limit) indexes = indexes.slice(0, this.props.limit);
     return (
-      <div style={{ margin: '20px' }}>
-        <table><tbody>
-        {
-          indexes.map(i =>
-            <tr>
-              <td>{this.props.data[i].country}</td>
-              <td>{this.props.data[i][this.props.field.id].string}</td>
-            </tr>)
-        }
-        </tbody></table>
+      <div className="table-group">
+        <div className={classNames('table-column', `table-column--${this.props.field.id}`)}>
+          <table><tbody>
+          {
+            indexes.map(i =>
+              <tr>
+                <td>{this.props.data[i].country}</td>
+                <td>{this.props.data[i][this.props.field.id].string}</td>
+              </tr>)
+          }
+          </tbody></table>
+        </div>
       </div>
     );
   }
@@ -34,7 +36,7 @@ class Component extends React.Component {
   render() {
     // debug(this.props.data);
     return (
-      <div className="panel panel--table">
+      <div className="pnl pnl--table">
         <TableColumn
           data={this.props.data}
           field={this.props.activeFields.forest}
