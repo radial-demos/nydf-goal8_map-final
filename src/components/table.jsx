@@ -20,7 +20,7 @@ class TableColumn extends React.Component {
           {
             indexes.map(i =>
               <tr>
-                <td>{this.props.data[i].country}</td>
+                <td className="cell cell--label">{this.props.data[i].country}</td>
                 <td className="cell cell--number">
                   {this.props.data[i][this.props.field.id].string}
                 </td>
