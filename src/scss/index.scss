@@ -25,7 +25,7 @@ $size-bin-finance-3: 80px;
   margin: 0 3.5em;
 }
 
-.row {
+.pseudorow {
   display: table-row;
 }
 
@@ -45,11 +45,21 @@ $size-bin-finance-3: 80px;
     .nav-label {
       background-color: $color-nav-forest-loss;
     }
+
+    .nav-indicator {
+      border-top-color: $color-nav-forest-loss;
+      visibility: visible;
+    }
   }
 
   &.nav-item--forest-losspercent {
     .nav-label {
       background-color: $color-nav-forest-losspercent;
+    }
+
+    .nav-indicator {
+      border-top-color: $color-nav-forest-losspercent;
+      visibility: visible;
     }
   }
 
@@ -57,17 +67,32 @@ $size-bin-finance-3: 80px;
     .nav-label {
       background-color: $color-nav-finance-resultsbased;
     }
+
+    .nav-indicator {
+      border-top-color: $color-nav-finance-resultsbased;
+      visibility: visible;
+    }
   }
 
   &.nav-item--finance-redd {
     .nav-label {
       background-color: $color-nav-finance-redd;
     }
+
+    .nav-indicator {
+      border-top-color: $color-nav-finance-redd;
+      visibility: visible;
+    }
   }
 
   &.nav-item--finance-development {
     .nav-label {
       background-color: $color-nav-finance-development;
+    }
+
+    .nav-indicator {
+      border-top-color: $color-nav-finance-development;
+      visibility: visible;
     }
   }
 }
@@ -81,6 +106,16 @@ $size-bin-finance-3: 80px;
   line-height: normal; // undo Bootstrap setting for body
   margin: 0;
   padding: .45em 2.75em;
+}
+
+.nav-indicator {
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 20px solid $color-white;
+  display: inline-block;
+  height: 0;
+  visibility: hidden;
+  width: 0;
 }
 
 .legend-group {

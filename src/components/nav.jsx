@@ -24,7 +24,7 @@ class NavRow extends React.Component {
   render() {
     return (
       <div className={classNames('nav-group', `nav-group--${this.props.type}`)}>
-        <div className={classNames('row', 'nav-row')}>
+        <div className={classNames('pseudorow', 'nav-row')}>
           {this.props.fields.map(field =>
             <span
               key={field.id}
@@ -32,6 +32,7 @@ class NavRow extends React.Component {
               className={classNames('nav-item', `nav-item--${field.id}`, { 'nav-item--active': (field.id === this.state.activeField) })}
             >
               <span className='nav-label'>{field.label}</span>
+              <span className='nav-indicator'></span>
             </span>)
           }
         </div>
