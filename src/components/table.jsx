@@ -11,12 +11,18 @@ class TableColumn extends React.Component {
     return (
       <div className="table-group">
         <div className={classNames('table-column', `table-column--${this.props.field.id}`)}>
+          <div className="table-title">
+            {this.props.field.title}
+            <span className="table-title-units"> ({this.props.field.units})</span>
+          </div>
           <table><tbody>
           {
             indexes.map(i =>
               <tr>
                 <td>{this.props.data[i].country}</td>
-                <td>{this.props.data[i][this.props.field.id].string}</td>
+                <td className="cell cell--number">
+                  {this.props.data[i][this.props.field.id].string}
+                </td>
               </tr>)
           }
           </tbody></table>
