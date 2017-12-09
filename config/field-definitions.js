@@ -18,8 +18,8 @@ module.exports = [
     binPartitions: [
       { value: 0.03, label: '< 30,000 ha' },
       { value: 0.1, label: '30,000 - 100,000 ha' },
-      { value: 1, label: '100,000 - 1,000,000 ha' },
-      { value: Number.POSITIVE_INFINITY, label: '> 1,000,000 ha' },
+      { value: 1, label: '100,000 - 1 million ha' },
+      { value: Number.POSITIVE_INFINITY, label: '> 1 million ha' },
       { value: null, label: 'No data available, no forest loss reported, and Annex 1 countries' },
     ],
   },
