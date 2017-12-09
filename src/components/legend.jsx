@@ -14,7 +14,7 @@ class LegendRow extends React.Component {
   render() {
     return (
       <div className={classNames('legend-group', `legend-group--${this.props.field.type}`)}>
-        <div className={classNames('row', 'legend-row', `legend-row--${this.props.field.id}`)}>
+        <div className={classNames('pseudorow', 'legend-row', `legend-row--${this.props.field.id}`)}>
           {this.props.field.binPartitions.map((bin, index) =>
             <div
               key={index}
