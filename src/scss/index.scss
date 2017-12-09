@@ -12,6 +12,7 @@ $color-bin-forest-3: #6a5b43;
 $color-bin-forest-4: #eee;
 
 $color-white: #fff;
+$color-white-border-transition: #e0e0e0;
 $color-gray: #d3d3d3;
 $color-gray-border-transition: #c2c2c2;
 $color-gray-border: #9a9a9a;
@@ -255,9 +256,9 @@ $size-bin-finance-3: 80px;
     font-size: 1.1em;
     padding-bottom: .4em;
 
-    &:first-child {
-      padding-right: 4em;
-    }
+    // &:first-child {
+    //   padding-right: 4em;
+    // }
   }
 
   .table-column {
@@ -288,20 +289,28 @@ $size-bin-finance-3: 80px;
 
 .table-title {
   font-size: 1.6em;
-  min-height: 100px;
+  min-height: 105px;
+  border-bottom: 1px solid $color-white-border-transition;
+  margin-bottom: 10px;
 }
 
 .table-title-limit {
   font-weight: bold;
 }
 
-.cell--number {
+.cell--index {
+  padding-right: 20px;
   text-align: right;
 }
 
 .cell--label {
   min-width: 300px;
 }
+
+.cell--number {
+  text-align: right;
+}
+
 
 // .table-column {
 //   display: table-cell;
