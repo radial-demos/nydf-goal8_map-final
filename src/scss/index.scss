@@ -253,7 +253,11 @@ $size-bin-finance-3: 80px;
 
 .table-title {
   font-size: 1.6em;
-  min-height: 95px;
+  min-height: 100px;
+}
+
+.table-title-limit {
+  font-weight: bold;
 }
 
 .cell--number {

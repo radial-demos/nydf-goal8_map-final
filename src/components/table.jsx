@@ -14,6 +14,7 @@ class TableColumn extends React.Component {
           <div className="table-title">
             {this.props.field.title}
             <span className="table-title-units"> ({this.props.field.units})</span>
+            {this.props.limit && <span className="table-title-limit"> TOP {this.props.limit}</span>}
           </div>
           <table><tbody>
           {
@@ -40,7 +41,6 @@ class Component extends React.Component {
   }
 
   render() {
-    // debug(this.props.data);
     return (
       <div className="pnl pnl--table">
         <TableColumn
