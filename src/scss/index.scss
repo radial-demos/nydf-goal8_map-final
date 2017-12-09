@@ -120,7 +120,7 @@ $size-bin-finance-3: 80px;
   }
 
   .legend-item--2 {
-    width: 200px;
+    width: 180px;
   }
 
   .legend-item--3 {
@@ -227,7 +227,7 @@ $size-bin-finance-3: 80px;
 
   .table-column {
     color: $color-white;
-    padding: 2em;
+    padding: 1em 2em;
   }
 
   .table-column--forest-loss {
@@ -250,6 +250,16 @@ $size-bin-finance-3: 80px;
     background-color: $color-nav-finance-development;
   }
 }
+
+.table-title {
+  font-size: 1.6em;
+  min-height: 95px;
+}
+
+.cell--number {
+  text-align: right;
+}
+
 // .table-column {
 //   display: table-cell;
 // }
