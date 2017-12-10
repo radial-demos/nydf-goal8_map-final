@@ -14,7 +14,7 @@ $color-bin-forest-4: #eee;
 $color-white: #fff;
 $color-white-border-transition: #e0e0e0;
 $color-gray: #d3d3d3;
-$color-gray-border-transition: #c2c2c2;
+$color-gray-border-transition: #b9b9b9;
 $color-gray-border: #9a9a9a;
 
 $size-bin-finance-0: 12px;
@@ -39,6 +39,44 @@ $size-bin-finance-3: 80px;
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+
+  &:first-child {
+    .nav-label {
+      border: 0;
+    }
+  }
+}
+
+.nav-item:hover:not(.nav-item--active) {
+  &.nav-item--forest-loss {
+    .nav-label {
+      background-color: rgba($color-nav-forest-loss, .65);
+    }
+  }
+
+  &.nav-item--forest-losspercent {
+    .nav-label {
+      background-color: rgba($color-nav-forest-losspercent, .65);
+    }
+  }
+
+  &.nav-item--finance-resultsbased {
+    .nav-label {
+      background-color: rgba($color-nav-finance-resultsbased, .65);
+    }
+  }
+
+  &.nav-item--finance-redd {
+    .nav-label {
+      background-color: rgba($color-nav-finance-redd, .65);
+    }
+  }
+
+  &.nav-item--finance-development {
+    .nav-label {
+      background-color: rgba($color-nav-finance-development, .65);
+    }
+  }
 }
 
 .nav-item--active {
@@ -56,6 +94,10 @@ $size-bin-finance-3: 80px;
   &.nav-item--forest-losspercent {
     .nav-label {
       background-color: $color-nav-forest-losspercent;
+
+      &:hover {
+        background-color: $color-nav-forest-losspercent;
+      }
     }
 
     .nav-indicator {
@@ -100,6 +142,7 @@ $size-bin-finance-3: 80px;
 
 .nav-label {
   background-color: $color-gray;
+  border-left: 3px solid $color-gray-border-transition;
   color: $color-white;
   cursor: pointer;
   display: block;
