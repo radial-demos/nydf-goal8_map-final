@@ -4,12 +4,16 @@ import { orderBy } from 'lodash';
 import Nav from './components/nav.jsx';
 import Legend from './components/legend.jsx';
 import Table from './components/table.jsx';
+// import Chart from './components/chart.jsx';
 
-const debug = require('debug')('nydf:map');
+import Map from './map';
+
+const debug = require('debug')('nydf:app');
 
 class Component extends React.Component {
   constructor(props) {
     super(props);
+    Map.init(this.props.data);
     this.availableFields = {
       forest: props.fieldDefinitions.filter(d => d.type === 'forest').map(d => Object.assign(d, { indexes: getIndexes(d) })),
       finance: props.fieldDefinitions.filter(d => d.type === 'finance').map(d => Object.assign(d, { indexes: getIndexes(d) })),
@@ -21,6 +25,7 @@ class Component extends React.Component {
         finance: this.availableFields.finance[0],
       },
     };
+    Map.updateFields(this.state.activeFields);
     // function bindings
     this.updateActiveFields = this.updateActiveFields.bind(this);
     // constructor support functions
@@ -36,6 +41,10 @@ class Component extends React.Component {
       activeFields[fieldType] = this.availableFields[fieldType].find(d => d.id === fieldId);
       return { activeFields };
     });
+  }
+
+  componentDidUpdate() {
+    Map.updateFields(this.state.activeFields);
   }
 
   render() {
