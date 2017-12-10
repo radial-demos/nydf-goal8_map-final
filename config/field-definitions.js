@@ -54,10 +54,10 @@ module.exports = [
     format: ',.0f',
     display: 'icon',
     binPartitions: [
-      { value: 10, label: '< USD 10 million' },
-      { value: 50, label: 'USD 10 - 50 million' },
-      { value: 200, label: 'USD 50 - 200 million' },
-      { value: Number.POSITIVE_INFINITY, label: '> USD 200 million' },
+      { value: 10, label: '< USD 10 million', size: '12' },
+      { value: 50, label: 'USD 10 - 50 million', size: '30' },
+      { value: 200, label: 'USD 50 - 200 million', size: '45' },
+      { value: Number.POSITIVE_INFINITY, label: '> USD 200 million', size: '80' },
     ],
   },
   {
@@ -71,10 +71,10 @@ module.exports = [
     format: ',.0f',
     display: 'icon',
     binPartitions: [
-      { value: 10, label: '< USD 10 million' },
-      { value: 50, label: 'USD 10 - 50 million' },
-      { value: 200, label: 'USD 50 - 200 million' },
-      { value: Number.POSITIVE_INFINITY, label: '> USD 200 million' },
+      { value: 10, label: '< USD 10 million', size: '12' },
+      { value: 50, label: 'USD 10 - 50 million', size: '30' },
+      { value: 200, label: 'USD 50 - 200 million', size: '45' },
+      { value: Number.POSITIVE_INFINITY, label: '> USD 200 million', size: '80' },
     ],
   },
   {
@@ -88,10 +88,10 @@ module.exports = [
     format: ',.0f',
     display: 'icon',
     binPartitions: [
-      { value: 10, label: '< USD 10 million' },
-      { value: 50, label: 'USD 10 - 50 million' },
-      { value: 200, label: 'USD 50 - 200 million' },
-      { value: Number.POSITIVE_INFINITY, label: '> USD 200 million' },
+      { value: 10, label: '< USD 10 million', size: '12' },
+      { value: 50, label: 'USD 10 - 50 million', size: '30' },
+      { value: 200, label: 'USD 50 - 200 million', size: '45' },
+      { value: Number.POSITIVE_INFINITY, label: '> USD 200 million', size: '80' },
     ],
   },
 ];
