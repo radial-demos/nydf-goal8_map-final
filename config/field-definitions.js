@@ -53,6 +53,7 @@ module.exports = [
     isNumber: true,
     format: ',.0f',
     display: 'icon',
+    color: '#e8b685',
     binPartitions: [
       { value: 10, label: '< USD 10 million', size: '12' },
       { value: 50, label: 'USD 10 - 50 million', size: '30' },
@@ -70,6 +71,7 @@ module.exports = [
     isNumber: true,
     format: ',.0f',
     display: 'icon',
+    color: '#66b23e',
     binPartitions: [
       { value: 10, label: '< USD 10 million', size: '12' },
       { value: 50, label: 'USD 10 - 50 million', size: '30' },
@@ -87,6 +89,7 @@ module.exports = [
     isNumber: true,
     format: ',.0f',
     display: 'icon',
+    color: '#66b8bc',
     binPartitions: [
       { value: 10, label: '< USD 10 million', size: '12' },
       { value: 50, label: 'USD 10 - 50 million', size: '30' },
