@@ -14,7 +14,6 @@ module.exports = [
     units: 'M ha',
     isNumber: true,
     format: '.2f',
-    display: 'choropleth',
     binPartitions: [
       { value: 0.03, label: '< 30,000 ha', color: '#eed870' },
       { value: 0.1, label: '30,000 - 100,000 ha', color: '#dea71b' },
@@ -34,7 +33,6 @@ module.exports = [
     units: 'percent/year',
     isNumber: true,
     format: '.2f',
-    display: 'choropleth',
     binPartitions: [
       { value: 0.005, label: '< 0.005 %', color: '#eed870' },
       { value: 0.1, label: '0.005 - 0.1 %', color: '#dea71b' },
@@ -52,7 +50,6 @@ module.exports = [
     units: 'USD million',
     isNumber: true,
     format: ',.0f',
-    display: 'icon',
     color: '#e8b685',
     binPartitions: [
       { value: 10, label: '< USD 10 million', size: '12' },
@@ -70,7 +67,6 @@ module.exports = [
     units: 'USD million',
     isNumber: true,
     format: ',.0f',
-    display: 'icon',
     color: '#66b23e',
     binPartitions: [
       { value: 10, label: '< USD 10 million', size: '12' },
@@ -88,7 +84,6 @@ module.exports = [
     units: 'USD million',
     isNumber: true,
     format: ',.0f',
-    display: 'icon',
     color: '#66b8bc',
     binPartitions: [
       { value: 10, label: '< USD 10 million', size: '12' },
