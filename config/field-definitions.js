@@ -16,11 +16,11 @@ module.exports = [
     format: '.2f',
     display: 'choropleth',
     binPartitions: [
-      { value: 0.03, label: '< 30,000 ha' },
-      { value: 0.1, label: '30,000 - 100,000 ha' },
-      { value: 1, label: '100,000 - 1 million ha' },
-      { value: Number.POSITIVE_INFINITY, label: '> 1 million ha' },
-      { value: null, label: 'No data available, no forest loss reported, and Annex 1 countries' },
+      { value: 0.03, label: '< 30,000 ha', color: '#eed870' },
+      { value: 0.1, label: '30,000 - 100,000 ha', color: '#dea71b' },
+      { value: 1, label: '100,000 - 1 million ha', color: '#a79646' },
+      { value: Number.POSITIVE_INFINITY, label: '> 1 million ha', color: '#6a5b43' },
+      { value: null, label: 'No data available, no forest loss reported, and Annex 1 countries', color: '#eee' },
     ],
   },
   {
@@ -36,11 +36,11 @@ module.exports = [
     format: '.2f',
     display: 'choropleth',
     binPartitions: [
-      { value: 0.005, label: '< 0.005 %' },
-      { value: 0.1, label: '0.005 - 0.1 %' },
-      { value: 1, label: '0.1 - 1 %' },
-      { value: Number.POSITIVE_INFINITY, label: '> 1 %' },
-      { value: null, label: 'No data available, no forest loss reported, and Annex 1 countries' },
+      { value: 0.005, label: '< 0.005 %', color: '#eed870' },
+      { value: 0.1, label: '0.005 - 0.1 %', color: '#dea71b' },
+      { value: 1, label: '0.1 - 1 %', color: '#a79646' },
+      { value: Number.POSITIVE_INFINITY, label: '> 1 %', color: '#6a5b43' },
+      { value: null, label: 'No data available, no forest loss reported, and Annex 1 countries', color: '#eee' },
     ],
   },
   {
