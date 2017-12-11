@@ -3,7 +3,7 @@ import { orderBy } from 'lodash';
 
 import Nav from './components/nav.jsx';
 import Legend from './components/legend.jsx';
-import Table from './components/table.jsx';
+import List from './components/list.jsx';
 import Figure from './components/figure.jsx';
 
 const debug = require('debug')('nydf:app');
@@ -74,7 +74,7 @@ class Component extends React.Component {
           />
         </div>
         <div className="nydfcomponent nydfcomponent--narrow">
-          <Table
+          <List
             data={this.props.data}
             activeFields={this.state.activeFields}
             limit="10"
