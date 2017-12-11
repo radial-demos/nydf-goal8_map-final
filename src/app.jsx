@@ -57,7 +57,9 @@ class Component extends React.Component {
             updateActiveFields={this.updateActiveFields}
           />
         </div>
-        <div style={{ height: '500px', width: '100%' }} id="nydfmap"/>
+        <div className="nydfcomponent">
+          <div style={{ height: '500px', width: '100%' }} id="nydfmap"/>
+        </div>
         <div className="nydfcomponent nydfcomponent--narrow">
           <Legend
             activeFields={this.state.activeFields}

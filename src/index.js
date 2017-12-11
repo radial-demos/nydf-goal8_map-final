@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 
 import App from './app.jsx';
-import fieldDefinitions from '../config/field-definitions';
+import fieldDefinitions from './config/field-definitions';
 import data from './data/data.json';
 
 process.env.DEBUG = 'nydf:*';

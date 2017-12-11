@@ -9,9 +9,9 @@ const d3 = require('d3');
 const _ = require('lodash');
 
 
-const countryNames = require('./config/country-names');
-const countryCoordinates = require('./config/country-coordinates');
-const fieldDefinitions = require('./config/field-definitions');
+const countryNames = require('./src/config/country-names');
+const countryCoordinates = require('./src/config/country-coordinates');
+const fieldDefinitions = require('./src/config/field-definitions');
 
 function parseTsv(tsvString, fieldDefs) {
   const data = [];
@@ -75,7 +75,7 @@ function lookupCoordinates(id) {
 const countryCodeLookup = CountryCodeLookup(countryNames);
 
 (async () => {
-  const tsv = await fs.readFile('./config/data.csv', { encoding: 'utf8' });
+  const tsv = await fs.readFile('./src/config/data.csv', { encoding: 'utf8' });
   let data = parseTsv(tsv, fieldDefinitions);
   // post-process
   data = data.map((datum) => {
