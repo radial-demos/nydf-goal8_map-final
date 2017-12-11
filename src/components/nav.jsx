@@ -10,6 +10,7 @@ class NavRow extends React.Component {
       activeField: this.props.fields[0].id,
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleHover = this.handleMouseOver.bind(this);
   }
 
   handleClick(fieldType, fieldId) {
@@ -21,6 +22,14 @@ class NavRow extends React.Component {
     this.props.updateActiveFields(fieldType, fieldId);
   }
 
+  handleMouseOver(fieldType, fieldId) {
+    debug(fieldType, fieldId);
+  }
+
+  handleMouseOut() {
+    // debug('OUT');
+  }
+
   render() {
     return (
       <div className={classNames('nav-group', `nav-group--${this.props.type}`)}>
@@ -29,6 +38,8 @@ class NavRow extends React.Component {
             <span
               key={field.id}
               onClick={this.handleClick.bind(this, field.type, field.id)}
+              onMouseOver={this.handleMouseOver.bind(this, field.type, field.id)}
+              onMouseOut={this.handleMouseOut}
               className={classNames('nav-item', `nav-item--${field.id}`, { 'nav-item--active': (field.id === this.state.activeField) })}
             >
               <span className='nav-label'>{field.label}</span>
