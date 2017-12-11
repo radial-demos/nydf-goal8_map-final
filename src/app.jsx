@@ -4,16 +4,13 @@ import { orderBy } from 'lodash';
 import Nav from './components/nav.jsx';
 import Legend from './components/legend.jsx';
 import Table from './components/table.jsx';
-// import Chart from './components/chart.jsx';
-
-import Map from './map';
+import Figure from './components/figure.jsx';
 
 const debug = require('debug')('nydf:app');
 
 class Component extends React.Component {
   constructor(props) {
     super(props);
-    Map.init(this.props.data);
     this.availableFields = {
       forest: props.fieldDefinitions.filter(d => d.type === 'forest').map(d => Object.assign(d, { indexes: getIndexes(d) })),
       finance: props.fieldDefinitions.filter(d => d.type === 'finance').map(d => Object.assign(d, { indexes: getIndexes(d) })),
@@ -26,7 +23,6 @@ class Component extends React.Component {
       },
       hoveredBin: {},
     };
-    Map.updateFields(this.state.activeFields);
     // function bindings
     this.updateActiveFields = this.updateActiveFields.bind(this);
     this.updateHoveredBin = this.updateHoveredBin.bind(this);
@@ -50,7 +46,7 @@ class Component extends React.Component {
   }
 
   componentDidUpdate() {
-    Map.updateFields(this.state.activeFields);
+    // Map.updateFields(this.state.activeFields);
   }
 
   render() {
@@ -64,7 +60,12 @@ class Component extends React.Component {
           />
         </div>
         <div className="nydfcomponent">
-          <div style={{ height: '500px', width: '100%' }} id="nydfmap"/>
+          <Figure
+            data={this.props.data}
+            availableFields={this.availableFields}
+            activeForestField={this.state.activeFields.forest.id}
+            activeFinanceField={this.state.activeFields.finance.id}
+          />
         </div>
         <div className="nydfcomponent nydfcomponent--narrow">
           <Legend
