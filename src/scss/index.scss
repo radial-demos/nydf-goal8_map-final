@@ -22,8 +22,14 @@ $size-bin-finance-1: 30px;
 $size-bin-finance-2: 45px;
 $size-bin-finance-3: 80px;
 
+.nydfcomponent {
+  margin-bottom: 10px;
+}
+
 .nydfcomponent--narrow {
-  margin: 0 3.5em;
+  margin-left: 3.5em;
+  margin-right: 3.5em;
+  margin-top: 0;
 }
 
 .pseudorow {
@@ -142,7 +148,7 @@ $size-bin-finance-3: 80px;
 
 .nav-label {
   background-color: $color-gray;
-  border-left: 3px solid $color-gray-border-transition;
+  border-left: 2px solid $color-gray-border-transition;
   color: $color-white;
   cursor: pointer;
   display: block;
