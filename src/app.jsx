@@ -24,10 +24,12 @@ class Component extends React.Component {
         forest: this.availableFields.forest[0],
         finance: this.availableFields.finance[0],
       },
+      hoveredBin: {},
     };
     Map.updateFields(this.state.activeFields);
     // function bindings
     this.updateActiveFields = this.updateActiveFields.bind(this);
+    this.updateHoveredBin = this.updateHoveredBin.bind(this);
     // constructor support functions
     function getIndexes(fieldDefinition) {
       const amounts = orderBy(props.data.map((d, i) => [d[fieldDefinition.id].amount, i]), 0, 'desc');
@@ -41,6 +43,10 @@ class Component extends React.Component {
       activeFields[fieldType] = this.availableFields[fieldType].find(d => d.id === fieldId);
       return { activeFields };
     });
+  }
+
+  updateHoveredBin(args) {
+    this.setState({ hoveredBin: args });
   }
 
   componentDidUpdate() {
@@ -63,6 +69,7 @@ class Component extends React.Component {
         <div className="nydfcomponent nydfcomponent--narrow">
           <Legend
             activeFields={this.state.activeFields}
+            updateHoveredBin={this.updateHoveredBin}
           />
         </div>
         <div className="nydfcomponent nydfcomponent--narrow">

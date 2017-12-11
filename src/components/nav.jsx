@@ -10,7 +10,7 @@ class NavRow extends React.Component {
       activeField: this.props.fields[0].id,
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleHover = this.handleMouseOver.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
   }
 
   handleClick(fieldType, fieldId) {
@@ -23,11 +23,11 @@ class NavRow extends React.Component {
   }
 
   handleMouseOver(fieldType, fieldId) {
-    debug(fieldType, fieldId);
+    // debug(fieldType, fieldId);
   }
 
   handleMouseOut() {
-    // debug('OUT');
+  // debug('OUT');
   }
 
   render() {
