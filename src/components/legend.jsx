@@ -22,14 +22,15 @@ class LegendRow extends React.Component {
   }
 
   render() {
+    const { fieldDef } = this.props;
     return (
-      <div className={classNames('legend-group', `legend-group--${this.props.field.type}`)}>
-        <div className={classNames('pseudorow', 'legend-row', `legend-row--${this.props.field.id}`)}>
-          {this.props.field.binPartitions.map((bin, index) =>
+      <div className={classNames('legend-group', `legend-group--${fieldDef.type}`)}>
+        <div className={classNames('pseudorow', 'legend-row', `legend-row--${fieldDef.id}`)}>
+          {fieldDef.binPartitions.map((bin, index) =>
             <div
               key={index}
               className={classNames('legend-item', `legend-item--${index}`)}
-              onMouseOver={this.handleMouseOver.bind(this, this.props.field.type, index)}
+              onMouseOver={this.handleMouseOver.bind(this, fieldDef.type, index)}
               onMouseOut={this.handleMouseOut}
             >
               <span className={classNames('legend-marker', `legend-marker--${index}`)}>
@@ -45,17 +46,21 @@ class LegendRow extends React.Component {
 }
 
 class Component extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.forestFieldDefs = this.props.availableFields.forest;
+  //   this.financeFieldDefs = this.props.availableFields.finance;
+  // }
   render() {
-    const forestField = this.props.activeFields.forest;
-    const financeField = this.props.activeFields.finance;
+
     return (
       <div className="pnl pnl--legend">
         <LegendRow
-          field={forestField}
+          fieldDef={this.props.forestFieldDef}
           updateHoveredBin={this.props.updateHoveredBin}
         />
         <LegendRow
-          field={financeField}
+          fieldDef={this.props.financeFieldDef}
           updateHoveredBin={this.props.updateHoveredBin}
         />
       </div>

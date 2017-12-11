@@ -20,9 +20,6 @@ function getBinSize(binPartitions, amount) {
 }
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.map = AmCharts.makeChart('nydfmap', {
@@ -53,21 +50,19 @@ class Component extends React.Component {
         },
       }],
     });
-    this.updateMap(this.props.activeForestField, this.props.activeFinanceField);
+    this.updateMap(this.props.forestFieldDef, this.props.financeFieldDef);
   }
 
-  updateMap(forestFieldId, financeFieldId) {
+  updateMap(forestFieldDef, financeFieldDef) {
     const areas = [];
     const images = [];
-    const forestField = this.props.availableFields.forest.find(field => field.id === forestFieldId);
-    const financeField = this.props.availableFields.finance.find(field => field.id === financeFieldId);
     this.props.data.forEach((row) => {
       const { id } = row;
-      const forestValue = row[forestField.id];
-      const financeValue = row[financeField.id];
-      const color = getBinColor(forestField.binPartitions, forestValue.amount);
-      const title = `${row.country}<br/>${forestValue.string} (${forestField.units})<br/>${financeValue.string} (${financeField.units})`;
-      const size = getBinSize(financeField.binPartitions, financeValue.amount);
+      const forestValue = row[forestFieldDef.id];
+      const financeValue = row[financeFieldDef.id];
+      const color = getBinColor(forestFieldDef.binPartitions, forestValue.amount);
+      const title = `${row.country}<br/>${forestValue.string} (${forestFieldDef.units})<br/>${financeValue.string} (${financeFieldDef.units})`;
+      const size = getBinSize(financeFieldDef.binPartitions, financeValue.amount);
       areas.push({
         id,
         color,
@@ -79,7 +74,7 @@ class Component extends React.Component {
         theme: 'light',
         width: size,
         height: size,
-        color: financeField.color,
+        color: financeFieldDef.color,
         labelColor: color,
         labelRollOverColor: color,
         borderColor: color,
@@ -105,7 +100,9 @@ class Component extends React.Component {
     const forestFieldDidChange = (nextProps.activeForestField !== this.props.activeForestField);
     const financeFieldDidChange = (nextProps.activeFinanceField !== this.props.activeFinanceField);
     if (forestFieldDidChange || financeFieldDidChange) {
-      this.updateMap(nextProps.activeForestField, nextProps.activeFinanceField);
+      this.updateMap(nextProps.forestFieldDef, nextProps.financeFieldDef);
+    } else {
+      // debug('SKIPPING UPDATE');
     }
   }
 

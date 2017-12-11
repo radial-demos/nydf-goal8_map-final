@@ -53,22 +53,22 @@ class NavRow extends React.Component {
 }
 
 class Component extends React.Component {
-  constructor(props) {
-    super(props);
-    this.forestFields = this.props.forestFields;
-    this.financeFields = this.props.financeFields;
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.forestFields = this.props.forestFields;
+  //   this.financeFields = this.props.financeFields;
+  // }
 
   render() {
     return (
       <div className="pnl pnl--nav">
         <NavRow
-          fields={this.forestFields}
+          fields={this.props.forestFieldDefs}
           type='forest'
           updateActiveFields={this.props.updateActiveFields}
         />
         <NavRow
-          fields={this.financeFields}
+          fields={this.props.financeFieldDefs}
           type='finance'
           updateActiveFields={this.props.updateActiveFields}
         />

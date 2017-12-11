@@ -11,17 +11,13 @@ const debug = require('debug')('nydf:app');
 class Component extends React.Component {
   constructor(props) {
     super(props);
-    this.availableFields = {
-      forest: props.fieldDefinitions.filter(d => d.type === 'forest').map(d => Object.assign(d, { indexes: getIndexes(d) })),
-      finance: props.fieldDefinitions.filter(d => d.type === 'finance').map(d => Object.assign(d, { indexes: getIndexes(d) })),
-    };
+    this.forestFieldDefs = props.fieldDefinitions.filter(d => d.type === 'forest').map(d => Object.assign(d, { indexes: getIndexes(d) }));
+    this.financeFieldDefs = props.fieldDefinitions.filter(d => d.type === 'finance').map(d => Object.assign(d, { indexes: getIndexes(d) }));
     // state initialization
     this.state = {
-      activeFields: {
-        forest: this.availableFields.forest[0],
-        finance: this.availableFields.finance[0],
-      },
-      hoveredBin: {},
+      activeForestField: this.forestFieldDefs[0].id,
+      activeFinanceField: this.financeFieldDefs[0].id,
+      hoveredBin: '',
     };
     // function bindings
     this.updateActiveFields = this.updateActiveFields.bind(this);
@@ -34,15 +30,15 @@ class Component extends React.Component {
   }
 
   updateActiveFields(fieldType, fieldId) {
-    this.setState((prevState) => {
-      const { activeFields } = prevState;
-      activeFields[fieldType] = this.availableFields[fieldType].find(d => d.id === fieldId);
-      return { activeFields };
-    });
+    if (fieldType === 'forest') {
+      this.setState({ activeForestField: fieldId });
+    } else if (fieldType === 'finance') {
+      this.setState({ activeFinanceField: fieldId });
+    }
   }
 
-  updateHoveredBin(args) {
-    this.setState({ hoveredBin: args });
+  updateHoveredBin(binId) {
+    this.setState({ hoveredBin: binId });
   }
 
   componentDidUpdate() {
@@ -50,35 +46,43 @@ class Component extends React.Component {
   }
 
   render() {
+    const forestFieldDef = this.forestFieldDefs
+      .find(field => field.id === this.state.activeForestField);
+    const financeFieldDef = this.financeFieldDefs
+      .find(field => field.id === this.state.activeFinanceField);
+
     return (
       <div>
         <div className="nydfcomponent nydfcomponent--narrow">
           <Nav
-            forestFields={this.availableFields.forest}
-            financeFields={this.availableFields.finance}
+            forestFieldDefs={this.forestFieldDefs}
+            financeFieldDefs={this.financeFieldDefs}
             updateActiveFields={this.updateActiveFields}
           />
-        </div>
-        <div className="nydfcomponent">
-          <Figure
-            data={this.props.data}
-            availableFields={this.availableFields}
-            activeForestField={this.state.activeFields.forest.id}
-            activeFinanceField={this.state.activeFields.finance.id}
-          />
-        </div>
-        <div className="nydfcomponent nydfcomponent--narrow">
-          <Legend
-            activeFields={this.state.activeFields}
-            updateHoveredBin={this.updateHoveredBin}
-          />
-        </div>
-        <div className="nydfcomponent nydfcomponent--narrow">
-          <List
-            data={this.props.data}
-            activeFields={this.state.activeFields}
-            limit="10"
-          />
+          <div className="nydfcomponent">
+            <Figure
+              data={this.props.data}
+              forestFieldDef={forestFieldDef}
+              financeFieldDef={financeFieldDef}
+              activeForestField={this.state.activeForestField}
+              activeFinanceField={this.state.activeFinanceField}
+            />
+          </div>
+          <div className="nydfcomponent nydfcomponent--narrow">
+            <Legend
+              forestFieldDef={forestFieldDef}
+              financeFieldDef={financeFieldDef}
+              updateHoveredBin={this.updateHoveredBin}
+            />
+          </div>
+          <div className="nydfcomponent nydfcomponent--narrow">
+            <List
+              data={this.props.data}
+              forestFieldDef={forestFieldDef}
+              financeFieldDef={financeFieldDef}
+              limit="10"
+            />
+          </div>
         </div>
       </div>
     );

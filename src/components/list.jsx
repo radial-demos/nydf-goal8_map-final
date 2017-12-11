@@ -6,14 +6,14 @@ const debug = require('debug')('nydf:table');
 class TableColumn extends React.Component {
   render() {
     // debug(this.props.field.indexes);
-    let { indexes } = this.props.field;
+    let { indexes } = this.props.fieldDef;
     if (this.props.limit) indexes = indexes.slice(0, this.props.limit);
     return (
       <div className="table-group">
-        <div className={classNames('table-column', `table-column--${this.props.field.id}`)}>
+        <div className={classNames('table-column', `table-column--${this.props.fieldDef.id}`)}>
           <div className="table-title">
-            {this.props.field.title}
-            <span className="table-title-units"> ({this.props.field.units})</span>
+            {this.props.fieldDef.title}
+            <span className="table-title-units"> ({this.props.fieldDef.units})</span>
             {this.props.limit && <span className="table-title-limit"> TOP {this.props.limit}</span>}
           </div>
           <table><tbody>
@@ -23,7 +23,7 @@ class TableColumn extends React.Component {
                 <td className="cell cell--index">{i + 1}</td>
                 <td className="cell cell--label">{this.props.data[ref].country}</td>
                 <td className="cell cell--number">
-                  {this.props.data[ref][this.props.field.id].string}
+                  {this.props.data[ref][this.props.fieldDef.id].string}
                 </td>
               </tr>)
           }
@@ -46,12 +46,12 @@ class Component extends React.Component {
       <div className="pnl pnl--table">
         <TableColumn
           data={this.props.data}
-          field={this.props.activeFields.forest}
+          fieldDef={this.props.forestFieldDef}
           limit={this.props.limit}
         />
         <TableColumn
           data={this.props.data}
-          field={this.props.activeFields.finance}
+          fieldDef={this.props.financeFieldDef}
           limit={this.props.limit}
         />
       </div>
