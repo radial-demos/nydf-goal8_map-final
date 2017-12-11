@@ -19,7 +19,7 @@ class TableColumn extends React.Component {
           <table><tbody>
           {
             indexes.map((ref, i) =>
-              <tr>
+              <tr key={i}>
                 <td className="cell cell--index">{i + 1}</td>
                 <td className="cell cell--label">{this.props.data[ref].country}</td>
                 <td className="cell cell--number">
