@@ -1,6 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-import { debounce } from 'lodash';
 
 const debug = require('debug')('nydf:legend');
 
@@ -10,12 +9,11 @@ class LegendRow extends React.Component {
     this.state = {
       activeBin: 0,
     };
-    this.updateHoveredBin = debounce(this.props.updateHoveredBin, 200, { leading: false, trailing: true });
     this.handleMouseOver = this.handleHover.bind(this);
   }
 
   handleHover(binId) {
-    this.updateHoveredBin(binId);
+    this.props.updateHoveredBin(binId);
   }
 
   render() {
@@ -27,8 +25,8 @@ class LegendRow extends React.Component {
             <div
               key={index}
               className={classNames('legend-item', `legend-item--${index}`)}
-              onMouseOver={this.handleHover.bind(this, `${fieldDef.id}[${index}]`)}
-              onMouseOut={this.handleHover.bind(this, '')}
+              onMouseEnter={this.handleHover.bind(this, `${fieldDef.id}[${index}]`)}
+              onMouseLeave={this.handleHover.bind(this, '')}
             >
               <span className={classNames('legend-marker', `legend-marker--${index}`)}>
                 <span className={classNames('marker-shape', `marker-shape--${index}`)}></span>
