@@ -1,6 +1,6 @@
 {
   "name": "nydf-goal8_map-final",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Interactive map for static map figures from 2017 Goal 8 report.",
   "main": "index.js",
   "scripts": {
