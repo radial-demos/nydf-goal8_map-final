@@ -1,22 +1,15 @@
 import React from 'react';
 // import classNames from 'classnames';
 
-const debug = require('debug')('nydf:map');
+const debug = require('debug')('nydf:figure');
 
 const BACKGROUND_COLOR = '#ffffff';
 const UNLISTED_AREAS_COLOR = '#eeeeee';
 const OUTLINE_COLOR = '#d3d3d3';
 
-function getBinColor(binPartitions, amount) {
-  const bin = binPartitions.find(partition => (amount <= partition.value));
-  if (bin) return bin.color || 'cornsilk';
-  return 'cornsilk';
-}
-
-function getBinSize(binPartitions, amount) {
-  const bin = binPartitions.find(partition => (amount <= partition.value));
-  if (bin) return bin.size || '10';
-  return '10';
+function getBin(binPartitions, amount) {
+  const index = binPartitions.findIndex(partition => (amount <= partition.value));
+  return Object.assign({}, binPartitions[index], { index });
 }
 
 class Component extends React.Component {
@@ -59,25 +52,29 @@ class Component extends React.Component {
     this.props.data.forEach((row) => {
       const { id } = row;
       const forestValue = row[forestFieldDef.id];
+      const forestBin = getBin(forestFieldDef.binPartitions, forestValue.amount);
       const financeValue = row[financeFieldDef.id];
-      const color = getBinColor(forestFieldDef.binPartitions, forestValue.amount);
+      const financeBin = getBin(financeFieldDef.binPartitions, financeValue.amount);
+      // const color = getBinColor(forestFieldDef.binPartitions, forestValue.amount);
       const title = `${row.country}<br/>${forestValue.string} (${forestFieldDef.units})<br/>${financeValue.string} (${financeFieldDef.units})`;
-      const size = getBinSize(financeFieldDef.binPartitions, financeValue.amount);
+      // const size = getBinSize(financeFieldDef.binPartitions, financeValue.amount);
       areas.push({
         id,
-        color,
+        binId: `${forestFieldDef.id}[${forestBin.index}]`,
+        color: forestBin.color,
         title,
       });
       images.push({
         id,
+        binId: `${financeFieldDef.id}[${financeBin.index}]`,
         type: 'circle',
         theme: 'light',
-        width: size,
-        height: size,
+        width: financeBin.size,
+        height: financeBin.size,
         color: financeFieldDef.color,
-        labelColor: color,
-        labelRollOverColor: color,
-        borderColor: color,
+        labelColor: forestBin.color,
+        labelRollOverColor: forestBin.color,
+        borderColor: forestBin.color,
         outlineColor: '#ffffff',
         outlineAlpha: 0.5,
         outlineThickness: 2,
@@ -92,6 +89,10 @@ class Component extends React.Component {
     this.map.validateData();
   }
 
+  updateTransparency(hoveredBin) {
+    debug(this.map.dataProvider.images);
+  }
+
   componentWillUnmount() {
     // debug('UNMOUNT');
   }
@@ -99,9 +100,11 @@ class Component extends React.Component {
   componentWillReceiveProps(nextProps) {
     const forestFieldDidChange = (nextProps.activeForestField !== this.props.activeForestField);
     const financeFieldDidChange = (nextProps.activeFinanceField !== this.props.activeFinanceField);
+    const binDidChange = (nextProps.hoveredBin !== this.props.hoveredBin);
     if (forestFieldDidChange || financeFieldDidChange) {
       this.updateMap(nextProps.forestFieldDef, nextProps.financeFieldDef);
-    } else {
+    } else if (binDidChange) {
+      this.updateTransparency(nextProps.hoveredBin);
       // debug('SKIPPING UPDATE');
     }
   }
