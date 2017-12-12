@@ -179,6 +179,7 @@ $size-bin-finance-3: 80px;
 }
 
 .legend-item {
+  cursor: pointer;
   display: table-cell;
   // padding-right: 2em;
   padding: 1em 1em;
@@ -243,6 +244,10 @@ $size-bin-finance-3: 80px;
 }
 
 .legend-group--finance {
+  .legend-item:hover {
+    background-color: $color-gray;
+  }
+
   .marker-shape {
     border: 2px solid $color-gray-border-transition;
     border-radius: 50%;
