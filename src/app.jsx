@@ -66,6 +66,7 @@ class Component extends React.Component {
               financeFieldDef={financeFieldDef}
               activeForestField={this.state.activeForestField}
               activeFinanceField={this.state.activeFinanceField}
+              hoveredBin={this.state.hoveredBin}
             />
           </div>
           <div className="nydfcomponent nydfcomponent--narrow">
