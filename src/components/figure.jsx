@@ -2,6 +2,8 @@ import React from 'react';
 // import classNames from 'classnames';
 
 const debug = require('debug')('nydf:figure');
+const _uniq = require('lodash').uniq;
+const _debounce = require('lodash').debounce;
 
 const BACKGROUND_COLOR = '#ffffff';
 const UNLISTED_AREAS_COLOR = '#eeeeee';
@@ -13,6 +15,21 @@ function getBin(binPartitions, amount) {
 }
 
 class Component extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.updateGroups = _debounce((binId) => {
+    const [fieldType] = binId.split('-');
+      const groupIds = _uniq(this.map.dataProvider.images.map(image => image.groupId));
+      groupIds.forEach((groupId) => {
+        if (binId && (fieldType === 'finance') && (groupId !== binId)) {
+          this.map.hideGroup(groupId);
+        } else {
+          this.map.showGroup(groupId);
+        }
+      });
+    }, 100);
+  }
 
   componentDidMount() {
     this.map = AmCharts.makeChart('nydfmap', {
@@ -66,7 +83,7 @@ class Component extends React.Component {
       });
       images.push({
         id,
-        binId: `${financeFieldDef.id}[${financeBin.index}]`,
+        groupId: `${financeFieldDef.id}[${financeBin.index}]`,
         type: 'circle',
         theme: 'light',
         width: financeBin.size,
@@ -89,8 +106,23 @@ class Component extends React.Component {
     this.map.validateData();
   }
 
-  updateTransparency(hoveredBin) {
-    debug(this.map.dataProvider.images);
+  updateTransparency(binId) {
+    // const [fieldType] = binId.split('-');
+    // this.map.dataProvider.images.forEach((image) => {
+    //   if (fieldType !== 'finance') {
+    //     image.alpha = 0.5;
+    //     image.outlineAlpha = 0.5;
+    //     return;
+    //   }
+    //   if (image.binId === binId) {
+    //     image.alpha = 0.8;
+    //     image.outlineAlpha = 0.5;
+    //   } else {
+    //     image.alpha = 0.15;
+    //     image.outlineAlpha = 0.15;
+    //   }
+    // });
+    // this.map.validateNow();
   }
 
   componentWillUnmount() {
@@ -104,8 +136,7 @@ class Component extends React.Component {
     if (forestFieldDidChange || financeFieldDidChange) {
       this.updateMap(nextProps.forestFieldDef, nextProps.financeFieldDef);
     } else if (binDidChange) {
-      this.updateTransparency(nextProps.hoveredBin);
-      // debug('SKIPPING UPDATE');
+      this.updateGroups(nextProps.hoveredBin);
     }
   }
 
